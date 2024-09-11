@@ -28,12 +28,18 @@ import (
 func Start() {
 	godotenv.Load()
 	mongoClient = connectOnMongo()
-	httpServer()
+	httpServer(routing.New())
 	wait()
 }
 
-func httpServer() {
-	router := routing.New()
+func StartWithRouter(router *routing.Router) {
+	godotenv.Load()
+	mongoClient = connectOnMongo()
+	httpServer(router)
+	wait()
+}
+
+func httpServer(router *routing.Router) {
 
 	router.Use(corsHandler(), logHandler(), panicHandler())
 

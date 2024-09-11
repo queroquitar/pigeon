@@ -1,4 +1,4 @@
-module github.com/alexmarco7/pigeon
+module github.com/queroquitar/pigeon
 
 go 1.12
 
